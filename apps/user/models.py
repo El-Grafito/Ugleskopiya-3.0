@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 
 class UserDop(Model):
     user = ForeignKey(User, on_delete=CASCADE)
-    image = ImageField('Фото', upload_to='UserImages', default='../media/default/default_coal.png')
+    image = ImageField('Фото', upload_to='UserImages', default='../static/default/default_coal.png')
     bio = CharField('О себе', max_length=100, default='Сладкий котик ~(=^‥^)/')
     important = BooleanField('Важность чела', default=False)
 
