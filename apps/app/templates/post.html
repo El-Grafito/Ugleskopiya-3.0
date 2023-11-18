@@ -1,0 +1,30 @@
+{% for post in posts %}
+    <div class="post">
+        <a href="{% url 'user' username=post.user.username %}">
+            {% if post.user.userdop_set.first.important == False %}<img class="user-ava" src="{{ post.user.userdop_set.first.image.url }}" alt="{{ post.user.username }}">{% endif %}
+            {% if post.user.userdop_set.first.important == True %}<img class="superuser-ava" src="{{ post.user.userdop_set.first.image.url }}" alt="{{ post.user.username }}">{% endif %}
+            <p>{{ post.user.username }}</p></a>
+        {% if post.user == user %}
+            <div class="aaaa">
+                <a class="del" href="{% url 'post_delete' pk=post.pk%}">Удалить</a>
+                <a href="{% url 'post_edit' pk=post.pk %}">Изменить</a>
+            </div>
+        {% endif %}
+        <div class="postpost">
+            <h1>{{ post.title }}</h1>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            {% endif %}
+            {% if post.text %}
+                <p>{{ post.text }}</p>
+            {% endif %}
+        </div>
+        <div class="category">
+            {% if post.category.exists %}
+                {% for category in post.category.all %}
+                    <a href="{% url 'category' slug=category.slug %}"><p>/{{ category.title }}</p></a>
+                {% endfor %}
+            {% endif %}
+        </div>         
+    </div>
+{% endfor %}

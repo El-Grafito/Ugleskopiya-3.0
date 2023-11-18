@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ userP.username }}{% endblock %}
+
+{% block content %}
+
+    <div class="user-profile">
+        {% if userP.userdop_set.first.important == False %}
+            <div class="user-image">
+                <img class="user-ava" src="{{ userP.userdop_set.first.image.url }}" alt="{{ userP.username }}">
+            </div>
+        {% endif %}
+        {% if userP.userdop_set.first.important == True %}
+            <div class="superuser-image">
+                <img class="superuser-ava" src="{{ userP.userdop_set.first.image.url }}" alt="{{ userP.username }}">
+            </div>
+        {% endif %}
+        <div class="user-info">
+            <h1>{{ userP.username }}</h1>
+            <h3>{{ userP.userdop_set.first.bio }}</h3>
+            <h6>с нами с {{ userP.date_joined }}</h6>
+        </div>
+    </div>
+
+    {% include 'post.html' %}
+
+{% endblock %}
+
+  

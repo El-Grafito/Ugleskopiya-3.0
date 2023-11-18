@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль {{ user.username }}{% endblock %}
+
+{% block content %}
+    <div class="user-profile">
+        {% if user.userdop_set.first.important == False %}
+            <div class="user-image">
+                <img class="user-ava" src="{{ user.userdop_set.first.image.url }}" alt="{{ user.username }}">
+            </div>
+        {% endif %}
+        {% if user.userdop_set.first.important == True %}
+            <div class="superuser-image">
+                <img class="superuser-ava" src="{{ user.userdop_set.first.image.url }}" alt="{{ user.username }}">
+            </div>
+        {% endif %}
+        <div class="user-info">
+            <h1>{{ user.username }}</h1>
+            <h3>{{ user.userdop_set.first.bio }}</h3>
+            <h6>с нами с {{ user.date_joined }}</h6>
+        </div>
+        <a class="linka" href="edit_profil">Изменить данные</a>
+    </div>
+
+    {% include 'post.html' %}
+
+    <div class="post-form">
+        <form action="{% url 'profil' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Запостить" name="post">
+        </form>
+    </div>
+
+{% endblock %}
+
+   

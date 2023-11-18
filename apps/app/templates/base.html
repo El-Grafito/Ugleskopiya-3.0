@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+  <title>{% block title %}Ugleskopiya{% endblock %}</title>  
+</head>
+<body>
+  <div class="strip" id="header">
+    <a href="{% url 'main' %}">
+      <img src="{% static 'images/logo2.png' %}" alt="logo" class="logo"><h1>Ugleskopiya</h1>
+    </a>
+    <div class="status">
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Выйти</a>
+      {% else %}
+        <a href="{% url 'login' %}">Войти</a>
+      {% endif %}      
+    </div>
+    <div class="menu-wrap">
+      <input type="checkbox" class="toggler">
+      <div class="hamburger">
+        <div></div>
+      </div>
+      <div class="menu">
+        <div>
+          <div>
+            <ul>
+              <li><a href="{% url 'main' %}">Главная</a></li>
+              <li><a href="{% url 'profil' %}">Ваш профил</a></li>
+              <li><a href="{% url 'users' %}">Интересные люди</a></li>
+              <li><a href="{% url 'info' %}">О проекте</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block content %}
+  {% endblock %}
+</body>
+<footer>
+  <div class="strip-bottom">
+    <p>Вы дошли до конца ленты. Здесь не будут ссылки на наши соцсети, потому что мы позиционируемся как соцсеть (либо мне было лень) ;)</p>
+  </div>
+</footer>
+<div class="oppo"></div>
+<script src="{% static 'js/footer.js' %}"></script>
+</html>
+

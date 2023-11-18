@@ -1,0 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Ubuntu&display=swap');
+
+body {
+  background-color: #141414;
+  color: white !important;
+  font-family: 'Oswald', cursive;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+
+.strip {
+  background-color: #000000f7;
+  height: 60pt;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  margin: 10px;
+  margin-top: 20px;
+}
+
+
+.strip .logo,
+.strip h1 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  font-size: 37px;
+}
+
+.strip a {
+  color: inherit;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --primary-color: rgba(35, 59, 90, 0.5);
+  --overlay-color: rgba(74, 74, 74, 0.85);
+  --menu-speed: 0.75s;
+}
+
+
+.menu-wrap {
+  position: fixed;
+  top: 0;
+  right: 0; 
+  z-index: 1;
+  margin-right: 4%; 
+  margin-top: 8px;
+}
+
+.menu-wrap .toggler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+.menu-wrap .hamburger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.menu-wrap .hamburger > div {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+}
+.menu-wrap .hamburger > div:after {
+  top: 10px;
+}
+.menu-wrap .toggler:checked+.hamburger > div {
+  transform: rotate(135deg);
+}
+.menu-wrap .toggler:checked+.hamburger > div:before,
+.menu-wrap .toggler:checked+.hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: var(--menu-speed);
+}
+.menu-wrap .toggler:checked ~ .menu>div>div {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-wrap .menu > div {
+  background-color: var(--overlay-color);
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.menu-wrap .menu > div > div > ul > li {
+  list-style: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.menu-wrap .menu > div > div > ul > li > a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+
+.post {
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 20px;
+  margin-top: 70pt;
+  position: relative; 
+  top: 0;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(121, 121, 121, 0.7);
+  transition: box-shadow 0.3s ease;
+  background-color: #151618;
+}
+
+.post h1 {
+  word-wrap: break-word;
+  max-width: 95%;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.postpost img {
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  width: 450pt;
+  height: auto;
+  display: block;
+  border-radius: 17px;
+}
+
+.postpost p {
+  word-wrap: break-word;
+  max-width: 80%;
+  margin-left: 0%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.post:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+.postpost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 20pt;
+}
+
+
+.post a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-ava {
+  margin-top: 10pt;
+  margin-left: 10pt;
+  width: 40pt;
+  height: 40pt;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.post a p {
+  margin: 5pt;
+}
+
+.postpost h1 {
+  margin: 0;
+}
+
+
+
+.strip-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30pt;
+  width: 100%;
+  background-color: #0c0c0c;
+  position: fixed;
+  bottom: -30pt;
+  transition: bottom 0.3s;
+}
+
+.strip-bottom p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+}
+
+.oppo {
+  background-color: #141414;
+  margin-top: 60pt;
+}
+
+.category {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 10pt;
+  margin-bottom: 5pt;
+  color: #bbbbbb;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.category-title {
+  margin-left: 200pt;
+  margin-top: 80pt;
+  margin-bottom: -40pt;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.users-title {
+  margin-left: 200pt;
+  margin-top: 80pt;
+  margin-bottom: -40pt;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.user-profile {
+  margin-top: 80pt;
+  margin-left: 100pt;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.user-image {
+  margin-right: 20pt;
+}
+
+.user-image img {
+  border-radius: 20%;
+  width: 100pt;
+  height: auto;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.779);
+}
+
+.user-info h3 {
+  color: #dcdcdc;
+}
+
+.user-info h6 {
+  color: #bbbbbb;
+}
+
+.superuser-image {
+  margin-right: 20px;
+}
+
+.superuser-image img {
+  border-radius: 20%;
+  width: 100pt;
+  height: auto;
+  border: 2px solid rgba(255, 255, 255, 0.916);
+  padding: 8px;
+  box-shadow: 0 0 10px 4px rgba(0, 247, 255, 0.777);
+}
+
+.superuser-ava {
+  margin-top: 10pt;
+  margin-left: 10pt;
+  width: 40pt;
+  height: 40pt;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.916);
+  padding: 3px;
+  box-shadow: 0 0 7px 2px rgba(0, 247, 255, 0.777);
+  margin-right: 5pt;
+}
+
+.aa {
+  color: #ffffff;
+  text-decoration: none
+}
+
+.userobj {
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 20px;
+  margin-top: 70pt;
+  position: relative; 
+  top: 0;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(121, 121, 121, 0.7);
+  transition: box-shadow 0.3s ease;
+  background-color: #151618;
+  display: flex;
+}
+
+.userobj:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+.userobj2 {
+  margin-left: 20px; 
+  margin-top: 17pt;
+}
+
+.userobj img {
+  margin-top: 20pt;
+  margin-left: 15pt;
+  margin-bottom: 40pt;
+}
+
+.userobj2 h1 {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.userobj2 p {
+  font-family: 'Courier New', Courier, monospace;
+  color: #b3b3b3;
+}
+
+.linka {
+  margin-left: 50pt;
+  margin-top: -50pt;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #2d2d2e;
+  padding: 7pt;
+  border: 1.5pt solid rgba(255, 255, 255, 0.646);
+  box-shadow: 0 0 5pt #ffffffaa;
+}
+
+.linka:hover {
+  box-shadow: 0 0 7pt #ffffffc5;
+}
+
+.status {
+  margin-left: 90%;
+  margin-top: -33pt;
+}
+
+.status a {
+  text-decoration: none;
+  color: #ffffff;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size:large;
+}
+
+.logout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logout h1 {
+  font-size:24pt;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.logout a {
+  color: #ff2e2e;
+  text-decoration: none;
+}
+
+.logout h2 {
+  margin-top: 15pt;
+  font-size: 18pt;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.user-form {
+  width: 50%;
+  margin: 100pt;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.user-form input[type="text"],
+.user-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Стили для кнопки */
+.user-form input[type="submit"] {
+  flex: 1; /* Занимает все доступное пространство */
+  outline: none;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(177, 177, 177);
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  margin-left: 7pt;
+}
+
+.user-form input::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+.user-form input:focus {
+  border-color: #ffffff;
+}
+
+/* CSS стили для формы создания поста */
+.post-form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  padding-left: 50pt;
+  padding-right: 50pt;
+  background-color: #232323fa; /* Серый фон */
+  box-shadow: 0px -2px 7px rgba(0, 0, 0, 0.652); /* Тень для выделения формы */
+  z-index: 9998; /* Устанавливаем высокий z-index */
+}
+
+.post-form form {
+  display: flex;
+  align-items: center; /* Выравнивание элементов по центру вертикально */
+}
+
+.post-form form input[type="text"],
+.post-form form textarea,
+.post-form form input[type="submit"] {
+  padding: 12px;
+  margin-right: 10px; /* Отступ между элементами */
+  flex: 1; /* Занимать всю доступную ширину */
+  border: 1px solid #ccc; /* Границы для разделения элементов */
+  border-radius: 4px; /* Закругленные углы */
+  box-sizing: border-box; /* Учесть границы в общей ширине/высоте элементов */
+}
+
+.post-form form input[type="submit"] {
+  margin-right: 0; /* Убираем отступ справа у кнопки */
+  background-color: #00f7ff; /* Цвет кнопки */
+  color: rgb(0, 0, 0); /* Цвет текста на кнопке */
+  border: none;
+  cursor: pointer; /* Курсор при наведении */
+  box-shadow: 0, 0, 1pt #ffffff;
+}
+
+.post-form form input[type="submit"]:hover {
+  background-color: #000000; /* Цвет кнопки при наведении */
+  color: white;
+}
+
+.post-form form input[type="text"],
+.post-form form textarea,
+.post-form form input[type="submit"] {
+    padding: 12px;
+    margin-right: 10px; /* Отступ между элементами */
+    flex: 1; /* Занимать всю доступную ширину */
+    border: 1px solid #ccc; /* Границы для разделения элементов */
+    border-radius: 4px; /* Закругленные углы */
+    box-sizing: border-box; /* Учесть границы в общей ширине/высоте элементов */
+    height: 40px; /* Установите желаемую высоту поля */
+}
+
+.post-form form input[type="text"],
+.post-form form textarea,
+.post-form form input[type="submit"],
+.post-form form select {
+    padding: 12px;
+    margin-right: 10px; /* Отступ между элементами */
+    flex: 1; /* Занимать всю доступную ширину */
+    border: 1px solid #ccc; /* Границы для разделения элементов */
+    border-radius: 4px; /* Закругленные углы */
+    box-sizing: border-box; /* Учесть границы в общей ширине/высоте элементов */
+    height: 40px; /* Установите желаемую высоту поля */
+}
+
+.post .aaaa {
+  display: flex;
+  margin-left: 83%;
+  margin-top: -5%;
+  margin-bottom: 5%;
+}
+
+.aaaa a {
+  margin-right: 10pt;
+}
+
+.aaaa .del {
+  color: rgb(255, 0, 0);
+}
+
+.aaaa a:hover {
+  color: #ffffff;
+}

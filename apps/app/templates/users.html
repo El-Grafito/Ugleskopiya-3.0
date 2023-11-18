@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Интересные люди{% endblock %}
+
+{% block content %}
+    <h1 class="users-title">Наши котики</h1>
+    {% for user in users %}
+        <a class="aa" href="{% url 'user' username=user.username %}">
+            <div class="userobj">
+                    {% if user.userdop_set.first.important == False %}<img class="user-ava" src="{{ user.userdop_set.first.image.url }}" alt="{{ user.username }}">{% endif %}
+                    {% if user.userdop_set.first.important == True %}<img class="superuser-ava" src="{{ user.userdop_set.first.image.url }}" alt="{{ user.username }}">{% endif %}
+            <div class="userobj2">
+                <h1>{{ user.username }}</h1>
+                <p>{{ user.userdop_set.first.bio }}</p>
+            </div>
+            </div>
+        </a>
+    {% endfor %}
+{% endblock %}
+
+ 

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title signup">Регистрация</div>
+        </div>
+        <div class="error">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+        {% endif %}
+        </div>
+        <div class="form-container">
+            <div class="form-inner">
+                <form action="{% url 'register' %}" method="post" class="signup">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label for="{{ form.password.id_for_label }}">Логин</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="field">
+                        <label for="{{ form.password.id_for_label }}">Пароль</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="field">
+                        <label for="{{ form.password.id_for_label }}">Повторите пароль</label>
+                        {{ form.confirm_password }}
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Зарегистрироваться" name="signup">
+                    </div>
+                    <div class="signup-link">Есть аккаунта? <a href="{% url 'login'%}">Войти</a></div>
+                </form>                    
+            </div>
+        </div>
+    </div>
+</body>
+</html>
