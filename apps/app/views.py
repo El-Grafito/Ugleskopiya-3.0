@@ -110,7 +110,7 @@ def nazvanie_funk(request):
 def post_delete(request, pk):
     user = request.user
     post = Post.objects.get(id=pk)
-    if post.user == user:
+    if post.user == user  or user.is_staff:
         post.delete()
     return redirect('profil')
 
@@ -118,7 +118,7 @@ def post_delete(request, pk):
 def post_edit(request, pk):
     user = request.user
     post = Post.objects.get(id=pk)
-    if post.user == user:
+    if post.user == user or user.is_staff:
         initial = {'title': post.title, 'text': post.text, 'category': ' '.join(post.category.values_list('title', flat=True)),}
         if request.method == 'POST':
             form = PostForm(request.POST, request.FILES)

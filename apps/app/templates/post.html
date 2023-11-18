@@ -4,7 +4,7 @@
             {% if post.user.userdop_set.first.important == False %}<img class="user-ava" src="{{ post.user.userdop_set.first.image.url }}" alt="{{ post.user.username }}">{% endif %}
             {% if post.user.userdop_set.first.important == True %}<img class="superuser-ava" src="{{ post.user.userdop_set.first.image.url }}" alt="{{ post.user.username }}">{% endif %}
             <p>{{ post.user.username }}</p></a>
-        {% if post.user == user %}
+        {% if post.user == user or user.is_staff %}
             <div class="aaaa">
                 <a class="del" href="{% url 'post_delete' pk=post.pk%}">Удалить</a>
                 <a href="{% url 'post_edit' pk=post.pk %}">Изменить</a>
