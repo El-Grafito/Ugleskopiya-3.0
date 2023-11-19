@@ -20,6 +20,7 @@
             <h6>с нами с {{ user.date_joined }}</h6>
         </div>
         <a class="linka" href="edit_profil">Изменить данные</a>
+        <a class="linka" href="{% url 'conf_page' username=user.username %}">Удалить аккаунт</a>
     </div>
 
     {% include 'post.html' %}

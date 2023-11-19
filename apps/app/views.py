@@ -112,6 +112,8 @@ def post_delete(request, pk):
     post = Post.objects.get(id=pk)
     if post.user == user  or user.is_staff:
         post.delete()
+    else:
+        return redirect('main')
     return redirect('profil')
 
 @login_required()
@@ -154,3 +156,28 @@ def post_edit(request, pk):
         return render(request, 'post_edit.html', context)
     else:
         return redirect('profil')
+
+@login_required()
+def delete_user(request, username):
+    user = request.user
+    userP = User.objects.get(username=username)
+    if userP == user or user.is_staff:
+        userP.delete()
+        return redirect('main')
+    else:
+        return redirect('main')
+    return redirect('profil')
+
+@login_required()
+def conf_page(request, username):
+    user = request.user
+    userP = User.objects.get(username=username)
+    if userP == user or user.is_staff:
+        context = {
+            'user': user,
+            'userP': userP            
+            }
+        return render(request, 'conf_page.html', context)
+    else:
+        return redirect('main')
+

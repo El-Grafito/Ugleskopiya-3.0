@@ -20,6 +20,9 @@
             <h3>{{ userP.userdop_set.first.bio }}</h3>
             <h6>с нами с {{ userP.date_joined }}</h6>
         </div>
+        {% if user == userP or user.is_staff %}
+            <a class="linka" href="{% url 'conf_page' username=userP.username %}">Удалить аккаунт</a>
+        {% endif %}
     </div>
 
     {% include 'post.html' %}
